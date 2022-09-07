@@ -1,0 +1,95 @@
+filenames = ['bk02A.txt, mn02A.txt, bx02A.txt, qn02A.txt, si02A.txt',]
+with open('nyc02A.txt', 'w') as outfile:
+    for fname in filenames:
+        with open(fname) as infile:
+            for line in infile:
+                outfile.write(line)
+
+import pandas as pd
+
+read_file = pd.read_csv (r'/Users/andyzhang/Downloads/nyc_pluto_22v1_csv/nyc02A.txt')
+read_file.to_csv (r'/Users/andyzhang/Downloads/nyc_pluto_22v1_csv/nyc02A.csv', index=None)
+
+import pandas as pd
+df = pd.read_csv("nyc02A.csv")
+df.columns = ['borough',
+ 'block',
+ 'lot',
+ 'cd',
+ 'bct2000',
+ 'bctcb2000',
+ 'schooldist',
+ 'council',
+ 'zipcode',
+ 'firecomp',
+ 'healtharea',
+'healthcenterdistrict',
+ 'policeprct',
+ 'address',
+ 'zonedist1',
+ 'zonedist2',
+ 'overlay1',
+ 'overlay2',
+ 'spdist1',
+ 'spdist2',
+'zonecomp1',
+'zonecomp2',
+ 'splitzone',
+ 'bldgclass',
+ 'landuse',
+ 'easements',
+ 'ownertype',
+ 'ownername',
+ 'lotarea',
+ 'bldgarea',
+ 'comarea',
+ 'resarea',
+ 'bscrea',
+ 'numbldgs',
+ 'numfloors',
+ 'unitsres',
+ 'unitstotal',
+ 'lotfront',
+ 'lotdepth',
+ 'bldgfront',
+ 'bldgdepth',
+ 'irrlotcode',
+'cornlotcode',
+ 'assessland',
+ 'assesstot',
+'exemptland',
+ 'exempttot',
+ 'yearbuilt',
+'yearbuiltcode',
+ 'yearalter1',
+ 'yearalter2',
+ 'histdist',
+ 'landmark',
+ 'builtfar',
+'zonefar',
+ 'borocode',
+ 'bbl',
+'ctract2',
+ 'xcoord',
+ 'ycoord',
+'cd2',
+ 'daterpad',
+ 'datedcas',
+ 'datedob',
+ 'datezone',
+ 'datemajprop',
+ 'datelandmark',
+ 'datecogis',
+ 'luc2',
+ 'cogispluto']
+
+df
+
+df.groupby("borough")["resarea"].sum()
+
+pd.options.display.float_format = '{:20,.2f}'.format
+
+df.groupby("borough")["resarea"].sum()
+
+Total = df['resarea'].sum()
+print(Total)
