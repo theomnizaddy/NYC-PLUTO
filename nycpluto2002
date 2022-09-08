@@ -11,8 +11,8 @@ read_file = pd.read_csv (r'/Users/andyzhang/Downloads/nyc_pluto_22v1_csv/nyc02A.
 read_file.to_csv (r'/Users/andyzhang/Downloads/nyc_pluto_22v1_csv/nyc02A.csv', index=None)
 
 import pandas as pd
-df = pd.read_csv("nyc02A.csv")
-df.columns = ['borough',
+nycpluto2002 = pd.read_csv("nyc02A.csv")
+nycpluto2002.columns = ['borough',
  'block',
  'lot',
  'cd',
@@ -83,13 +83,19 @@ df.columns = ['borough',
  'luc2',
  'cogispluto']
 
-df
+print(nycpluto2002.replace(r'^\s*$', np.nan, regex=True))
 
-df.groupby("borough")["resarea"].sum()
+nycpluto2002
 
-pd.options.display.float_format = '{:20,.2f}'.format
-
-df.groupby("borough")["resarea"].sum()
+nycpluto2002.groupby("borough")["resarea"].sum()
 
 Total = df['resarea'].sum()
 print(Total)
+
+pd.to_numeric(nycpluto2002['resarea'], errors='coerce').isna().sum()
+
+pd.to_numeric(nycpluto2002['council'], errors='coerce').isna().sum()
+
+pd.to_numeric(nycpluto2002['zipcode'], errors='coerce').isna().sum()
+
+pd.set_option('display.max_columns', None)
